@@ -1,63 +1,48 @@
-.App {
-}
 body {
   background-color: #04161f;
+  text-align: center;
+  color: white;
+}
 
-  /* border: solid white 2px; */
-}
+/* main header */
+
 h1 {
-  text-align: center;
   color: white;
-  /* border: solid white 2px; */
 }
-.router {
-  text-align: center;
-  justify-content: center;
-  color: white;
-  /* border: solid white 2px; */
-}
+
+/* nav bar */
 
 nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  color: white;
   padding: 20px;
-  /* border: solid white 2px; */
 }
 
-.button-nav {
-  text-align: center;
+#nav-button {
+  margin-right: 10px;
 }
-.nav-bar {
-  color: white;
-  padding: 15px;
+
+/* home page */
+
+.home-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 10%;
+  padding-left: 10%;
+  /* border: solid rgb(179, 29, 29) 2px; */
 }
+
 .card-body {
   color: #04161f;
-  /* display: flex;
-  flex-direction: column; */
-  justify-content: center;
 }
-.list {
-  display: grid;
-  grid-template-columns: 1fr, 2.5fr, 1.5fr, 1fr;
-  border: solid white 2px;
-}
+
 ul {
-  display: grid;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  justify-content: center;
-  border: solid white 2px;
+  padding: 0;
 }
 
 li {
   list-style-type: none;
-}
-
-.test {
-  display: grid;
-  grid-column-start: 3;
-  grid-column-end: 5;
-  border: solid white 2px;
 }
