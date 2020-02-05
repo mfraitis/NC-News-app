@@ -1,41 +1,6 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ShareIcon from "@material-ui/icons/Share";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     maxWidth: 345
-//   },
-//   media: {
-//     height: 0,
-//     paddingTop: "56.25%" // 16:9
-//   },
-//   expand: {
-//     transform: "rotate(0deg)",
-//     marginLeft: "auto",
-//     transition: theme.transitions.create("transform", {
-//       duration: theme.transitions.duration.shortest
-//     })
-//   },
-//   expandOpen: {
-//     transform: "rotate(180deg)"
-//   },
-//   avatar: {
-//     backgroundColor: red[500]
-//   }
-// }));
-
-// const classes = useStyles();
+import Votes from "./Votes";
+import PostComment from "./PostComment";
 
 const ArticleBody = props => {
   const {
@@ -48,41 +13,24 @@ const ArticleBody = props => {
     created_at,
     comment_count
   } = props.article;
-
+  const { addComment, username } = props;
   return (
-    <Card className={"root"}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={"avatar"}>
-            {author.charAt(0).toUpperCase()}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={title}
-        subheader={created_at}
+    <section id="article-body">
+      <br />
+      <p className="article-p">{title}</p>
+      <p className="article-p">{topic}</p>
+      <p className="article-p">{body}</p>
+      <p className="article-p">written by : {author}</p>
+      <p className="article-p">{created_at}</p>
+      <Votes id={article_id} votes={votes} />
+      <br />
+      <p className="article-p">{comment_count} comments</p>
+      <PostComment
+        username={username}
+        addComment={addComment}
+        id={article_id}
       />
-      <CardMedia className={"media"} title={title} />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {body}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="like">
-          <ThumbUpAltIcon />
-        </IconButton>
-        <IconButton aria-label="dislike">
-          <ThumbDownIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+    </section>
   );
 };
 

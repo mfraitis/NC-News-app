@@ -2,7 +2,7 @@ import React from "react";
 import ArticleCard from "./ArticleCard";
 import { fetchArticles } from "../api";
 import SearchBar from "./SearchBar";
-import { Link } from "@reach/router";
+
 
 class ArticlesList extends React.Component {
   state = {
@@ -20,15 +20,7 @@ class ArticlesList extends React.Component {
           <SearchBar search={this.searchArticles} />
           <ul>
             {articles.map(article => {
-              return (
-                <Link
-                  to={`/article/${article.article_id}`}
-                  key={article.article_id}
-                >
-                  {" "}
-                  <ArticleCard article={article} />
-                </Link>
-              );
+              return <ArticleCard key={article.article_id} article={article} />;
             })}
           </ul>
         </main>

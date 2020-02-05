@@ -11,18 +11,27 @@ class Article extends React.Component {
   };
 
   render() {
-    console.log(this.props.id);
     const { article, isLoading, comments } = this.state;
     if (isLoading) {
       return <p>Loading...</p>;
     } else
       return (
         <main>
-          <ArticleBody article={article} />
+          <ArticleBody
+            username={this.props.username}
+            addComment={this.addComment}
+            article={article}
+          />
           <CommentsList comments={comments} />
         </main>
       );
   }
+
+  addComment = newComment => {
+    this.setState(currentState => {
+      return { comments: [newComment, ...currentState.comments] };
+    });
+  };
 
   componentDidMount() {
     this.getArticle();
