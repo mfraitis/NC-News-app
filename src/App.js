@@ -11,7 +11,7 @@ import { fetchUsers } from "./api";
 
 class App extends React.Component {
   state = {
-    username: "",
+    username: null,
     users: []
   };
 
@@ -19,7 +19,11 @@ class App extends React.Component {
     const { users, username } = this.state;
     return (
       <div className="App">
-        <NavBar handleClick={this.handleClick} users={users} />
+        <NavBar
+          handleClick={this.handleClick}
+          users={users}
+          username={username}
+        />
         <Header />
         <Router>
           <Home path="/" />
@@ -30,7 +34,7 @@ class App extends React.Component {
     );
   }
   handleClick = event => {
-    this.setState({ username: event.target.text });
+    this.setState({ username: event.target.name });
   };
 
   componentDidMount() {
