@@ -38,10 +38,11 @@ class Votes extends React.Component {
   }
 
   handleVote = changeVote => {
+    const { patch, id } = this.props;
     this.setState(currentState => {
       return { voteChange: currentState.voteChange + changeVote };
     });
-    updateVotes(this.props.id, changeVote).catch(err => {
+    updateVotes(id, changeVote, patch).catch(err => {
       return this.setState(currentState => {
         return {
           err: err.response,

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const fetchArticles = topic => {
+export const fetchArticles = (topic, sortBy, order) => {
   return axios
     .get("https://mf-news.herokuapp.com/api/articles", {
-      params: { topic: topic }
+      params: { topic, sort_by: sortBy, order }
     })
     .then(({ data }) => {
       return data.articles;
@@ -24,8 +24,8 @@ export const fetchCommentsById = id => {
     });
 };
 
-export const updateVotes = (id, voteChange) => {
-  return axios.patch(`https://mf-news.herokuapp.com/api/articles/${id}`, {
+export const updateVotes = (id, voteChange, patch) => {
+  return axios.patch(`https://mf-news.herokuapp.com/api/${patch}/${id}`, {
     inc_votes: voteChange
   });
 };
@@ -47,4 +47,8 @@ export const fetchUsers = () => {
     .then(({ data }) => {
       return data.users;
     });
+};
+
+export const removeComment = id => {
+  return axios.delete(`https://mf-news.herokuapp.com/api/comments/${id}`);
 };

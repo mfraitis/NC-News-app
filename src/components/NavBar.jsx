@@ -4,6 +4,7 @@ import { Dropdown, Button } from "react-bootstrap";
 
 const NavBar = props => {
   const { users, handleClick, username } = props;
+
   return (
     <nav>
       <Link to={"/"}>
@@ -15,11 +16,18 @@ const NavBar = props => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
+          {/* <Link to="/topics/"> */}
           <Dropdown.Item href="/topics/coding">Coding</Dropdown.Item>
+          {/* </Link> */}
+          {/* <Link to="/topics/"> */}
           <Dropdown.Item href="/topics/cooking">Cooking</Dropdown.Item>
+          {/* </Link> */}
+          {/* <Link to="/topics/"> */}
           <Dropdown.Item href="/topics/football">Football</Dropdown.Item>
+          {/* </Link> */}
         </Dropdown.Menu>
       </Dropdown>
+
       {username ? (
         <Button id="logged-in" disabled variant="success">
           Logged in as : {username}
@@ -53,7 +61,5 @@ const NavBar = props => {
     </nav>
   );
 };
-
-/* <Button variant="success">Logged in as : {username}</Button>;  */
 
 export default NavBar;

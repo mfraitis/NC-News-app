@@ -8,39 +8,49 @@ import Header from "./components/Header";
 import Topics from "./components/Topics";
 import Article from "./components/Article";
 import { fetchUsers } from "./api";
+import ErrorPage from "./components/ErrorPage";
 
 class App extends React.Component {
   state = {
     username: null,
-    users: []
+    users: [],
+    err: null
   };
 
   render() {
-    const { users, username } = this.state;
-    return (
-      <div className="App">
-        <NavBar
-          handleClick={this.handleClick}
-          users={users}
-          username={username}
-        />
-        <Header />
-        <Router>
-          <Home path="/" />
-          <Topics path="/topics/:topic" />
-          <Article username={username} path="/article/:id" />
-        </Router>
-      </div>
-    );
+    const { users, username, err } = this.state;
+    
+    if (err) {
+      return <ErrorPage />;
+    } else {
+      return (
+        <div className="App">
+          <NavBar
+            handleClick={this.handleClick}
+            users={users}
+            username={username}
+          />
+          <Header />
+          <Router>
+            <Home path="/" />
+            <Topics path="/topics/:topic" />
+            <Article username={username} path="/article/:id" />
+            <ErrorPage default />
+          </Router>
+        </div>
+      );
+    }
   }
   handleClick = event => {
     this.setState({ username: event.target.name });
   };
 
   componentDidMount() {
-    fetchUsers().then(users => {
-      this.setState({ users: users.map(user => user.username) });
-    });
+    fetchUsers()
+      .then(users => {
+        this.setState({ users: users.map(user => user.username) });
+      })
+      .catch(err => this.setState({ err }));
   }
 }
 

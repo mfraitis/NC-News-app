@@ -35,7 +35,6 @@ class PostComment extends React.Component {
 
     postComment(id, this.state.comment, username)
       .then(comment => {
-        console.log(username, comment);
         addComment(comment);
       })
       .catch(err => console.log(err));

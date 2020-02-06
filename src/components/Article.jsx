@@ -1,52 +1,52 @@
 import React from "react";
-import { fetchArticle, fetchCommentsById } from "../api";
+import { fetchArticle } from "../api";
 import ArticleBody from "./ArticleBody";
 import CommentsList from "./CommentsList";
 
 class Article extends React.Component {
   state = {
     article: [],
-    isLoading: true,
-    comments: []
+    isLoading: true
   };
 
   render() {
-    const { article, isLoading, comments } = this.state;
+    const { article, isLoading } = this.state;
     if (isLoading) {
       return <p>Loading...</p>;
     } else
       return (
         <main>
-          <ArticleBody
+          <ArticleBody article={article} />
+          <CommentsList
+            // comments={comments}
             username={this.props.username}
-            addComment={this.addComment}
-            article={article}
+            // addComment={this.addComment}
+            article_id={article.article_id}
           />
-          <CommentsList comments={comments} />
         </main>
       );
   }
 
-  addComment = newComment => {
-    this.setState(currentState => {
-      return { comments: [newComment, ...currentState.comments] };
-    });
-  };
+  // addComment = newComment => {
+  //   this.setState(currentState => {
+  //     return { comments: [newComment, ...currentState.comments] };
+  //   });
+  // };
+  // getComments = () => {
+  //   const { id } = this.props;
+  //   fetchCommentsById(id).then(comments => {
+  //     this.setState({ comments: comments });
+  //   });
+  // };
 
   componentDidMount() {
     this.getArticle();
-    this.getComments();
+    // this.getComments();
   }
   getArticle = () => {
     const { id } = this.props;
     fetchArticle(id).then(article => {
       this.setState({ article: article, isLoading: false });
-    });
-  };
-  getComments = () => {
-    const { id } = this.props;
-    fetchCommentsById(id).then(comments => {
-      this.setState({ comments: comments });
     });
   };
 }

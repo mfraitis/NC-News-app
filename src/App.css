@@ -25,6 +25,14 @@ nav {
   margin-left: 10px;
 }
 
+#sort-by {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0;
+  
+}
+
 /* home page */
 
 .home-list {
@@ -41,6 +49,9 @@ nav {
 }
 p {
   color: #055712;
+}
+.comment-card {
+  color: white;
 }
 
 #article-body {

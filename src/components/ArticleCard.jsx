@@ -29,7 +29,7 @@ const ArticleCard = props => {
             </Card.Text>
           </Card.Body>{" "}
         </Link>
-        <Votes id={article_id} votes={votes} />
+        <Votes id={article_id} votes={votes} patch="articles" />
       </Card>
     </li>
   );
