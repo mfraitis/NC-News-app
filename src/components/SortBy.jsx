@@ -24,7 +24,7 @@ const SortBy = props => {
       </Dropdown>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          order
+          Order
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
