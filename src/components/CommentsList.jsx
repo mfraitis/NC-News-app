@@ -2,30 +2,33 @@ import React from "react";
 import CommentCard from "./CommentCard";
 import PostComment from "./PostComment";
 import { fetchCommentsById, removeComment } from "../api";
-
+import ErrorPage from "./ErrorPage";
 
 class CommentsList extends React.Component {
   state = {
-    comments: []
+    comments: [],
+    err: null
   };
 
   render() {
     const { username, article_id } = this.props;
-    const { comments } = this.state;
-
+    const { comments, err } = this.state;
+    if (err) {
+      return <ErrorPage err={err} />;
+    }
     return (
       <section>
-        <p className="article-p">{comments.length} comments</p>
+        <br />
         <PostComment
           username={username}
           addComment={this.addComment}
           id={article_id}
         />
+
         <ul>
           {comments.map(comment => {
             return (
               <CommentCard
-                
                 username={username}
                 key={comment.comment_id}
                 comment={comment}
@@ -50,7 +53,7 @@ class CommentsList extends React.Component {
           };
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ err: err.response }));
   };
 
   addComment = newComment => {
@@ -59,13 +62,13 @@ class CommentsList extends React.Component {
     });
   };
 
-  
-
   getComments = () => {
     const { article_id } = this.props;
-    fetchCommentsById(article_id).then(comments => {
-      this.setState({ comments: comments });
-    });
+    fetchCommentsById(article_id)
+      .then(comments => {
+        this.setState({ comments: comments });
+      })
+      .catch(err => this.setState({ err: err.response }));
   };
 
   componentDidMount() {

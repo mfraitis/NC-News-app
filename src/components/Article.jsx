@@ -2,52 +2,60 @@ import React from "react";
 import { fetchArticle } from "../api";
 import ArticleBody from "./ArticleBody";
 import CommentsList from "./CommentsList";
+import ErrorPage from "./ErrorPage";
 
 class Article extends React.Component {
   state = {
     article: [],
-    isLoading: true
+    isLoading: true,
+    showComments: false,
+    err: null
   };
 
   render() {
-    const { article, isLoading } = this.state;
-    if (isLoading) {
+    const { article, isLoading, showComments, err } = this.state;
+    if (err) {
+      return <ErrorPage err={err} />;
+    } else if (isLoading) {
       return <p>Loading...</p>;
     } else
       return (
         <main>
+          <h2>
+            {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+          </h2>
           <ArticleBody article={article} />
-          <CommentsList
-            // comments={comments}
-            username={this.props.username}
-            // addComment={this.addComment}
-            article_id={article.article_id}
-          />
+          <button onClick={this.viewComments}>
+            {showComments ? "Hide" : "View"} comments
+          </button>
+          <br />
+          {showComments ? (
+            <CommentsList
+              username={this.props.username}
+              article_id={article.article_id}
+            />
+          ) : null}
         </main>
       );
   }
 
-  // addComment = newComment => {
-  //   this.setState(currentState => {
-  //     return { comments: [newComment, ...currentState.comments] };
-  //   });
-  // };
-  // getComments = () => {
-  //   const { id } = this.props;
-  //   fetchCommentsById(id).then(comments => {
-  //     this.setState({ comments: comments });
-  //   });
-  // };
+  viewComments = () => {
+    this.setState(currentState => {
+      return { showComments: !currentState.showComments };
+    });
+  };
 
   componentDidMount() {
     this.getArticle();
-    // this.getComments();
   }
+
   getArticle = () => {
     const { id } = this.props;
-    fetchArticle(id).then(article => {
-      this.setState({ article: article, isLoading: false });
-    });
+    fetchArticle(id)
+      .then(article => {
+        this.setState({ article: article, isLoading: false });
+      })
+      .catch(err => this.setState({ err: err.response }));
   };
 }
 

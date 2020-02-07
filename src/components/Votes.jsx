@@ -2,6 +2,7 @@ import React from "react";
 import { updateVotes } from "../api";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import ErrorPage from "./ErrorPage";
 
 class Votes extends React.Component {
   state = {
@@ -12,7 +13,9 @@ class Votes extends React.Component {
   render() {
     const { votes } = this.props;
     const { voteChange, err } = this.state;
-
+    if (err) {
+      return <ErrorPage err={err} />;
+    }
     return (
       <section>
         <p> votes : {votes + voteChange}</p>
@@ -32,7 +35,7 @@ class Votes extends React.Component {
         >
           <ThumbDownIcon />
         </button>
-        {err && <p>error</p>}
+       
       </section>
     );
   }

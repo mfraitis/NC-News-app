@@ -4,7 +4,7 @@ class SearchBar extends React.Component {
   state = {
     searchValue: ""
   };
-  
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -14,6 +14,7 @@ class SearchBar extends React.Component {
             value={this.state.searchValue}
             type="text"
             onChange={this.handleChange}
+            required
           ></input>
         </label>{" "}
         <button type="submit">search</button>

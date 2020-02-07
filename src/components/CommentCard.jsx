@@ -8,16 +8,27 @@ const CommentCard = props => {
     <React.Fragment>
       <br />
       <li className="comment-card">{comment.body}</li>
-      {username === comment.author ? (
-        <button onClick={deleteComment} value={comment.comment_id}>
-          delete
-        </button>
-      ) : null}
-      {username ? (
-        <Votes id={comment.comment_id} votes={comment.votes} patch="comments" />
-      ) : (
-        <button disabled={!username}>Log in to vote</button>
-      )}
+      <section id="delete-button">
+        {username ? (
+          <Votes
+            id={comment.comment_id}
+            votes={comment.votes}
+            patch="comments"
+          />
+        ) : (
+          <button disabled={!username}>Log in to vote</button>
+        )}
+        {username === comment.author ? (
+          <button
+            id="delete-me"
+            onClick={deleteComment}
+            value={comment.comment_id}
+          >
+            Delete
+          </button>
+        ) : null}
+      </section>
+      <br />
     </React.Fragment>
   );
 };

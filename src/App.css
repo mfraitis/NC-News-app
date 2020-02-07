@@ -1,5 +1,6 @@
 body {
-  background-color: #04161f;
+  background-image: linear-gradient(to right, #04161f, #132f3d);
+  /* background-color:#04161f ; */
   text-align: center;
   color: white;
 }
@@ -50,9 +51,7 @@ nav {
 .card-body {
   color: #04161f;
 }
-p {
-  color: #055712;
-}
+
 .comment-card {
   color: white;
 }
@@ -70,7 +69,9 @@ p {
   padding-top: 0;
   margin-right: 10px;
 }
-
+.card-body {
+  color: #04161f;
+}
 .article-p {
   color: white;
 }
@@ -88,9 +89,26 @@ ul {
 li {
   list-style-type: none;
 }
-p.card-text {
+.card-text {
   margin-top: 2%;
   margin-bottom: 0;
   text-align: left;
   color: #04161f;
+}
+
+#article-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#article-p-info {
+  color: white;
+  margin-top: 4%;
+}
+
+#delete-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

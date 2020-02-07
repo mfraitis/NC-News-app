@@ -1,28 +1,38 @@
 import React from "react";
 import { postComment } from "../api";
+import ErrorPage from "./ErrorPage";
 
 class PostComment extends React.Component {
   state = {
-    comment: ""
+    comment: "",
+    err: null
   };
 
   render() {
-    const { comment } = this.state;
-
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          comment :{" "}
-          <input
-            value={comment}
-            onChange={this.handleChange}
-            type="text"
-          ></input>
-        </label>
-        <br />
-        <button type="submit"> post my comment</button>
-      </form>
-    );
+    const { comment, err } = this.state;
+    const { username } = this.props;
+    if (err) {
+      return <ErrorPage err={err} />;
+    } else {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Post Comment :{" "}
+            <input
+              value={comment}
+              onChange={this.handleChange}
+              type="text"
+              required
+              placeholder={!username ? "please sign in" : null}
+            ></input>
+          </label>{" "}
+          <button disabled={!username} type="submit">
+            {" "}
+            Submit
+          </button>
+        </form>
+      );
+    }
   }
 
   handleChange = event => {
@@ -37,7 +47,7 @@ class PostComment extends React.Component {
       .then(comment => {
         addComment(comment);
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ err: err.response }));
     this.setState({ comment: "" });
   };
 }

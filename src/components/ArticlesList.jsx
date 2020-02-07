@@ -10,7 +10,8 @@ class ArticlesList extends React.Component {
     articles: [],
     isLoading: true,
     sortBy: "",
-    order: ""
+    order: "",
+    err: null
   };
 
   render() {
@@ -79,10 +80,9 @@ class ArticlesList extends React.Component {
         });
       })
       .catch(err => {
-        return this.setState({ err });
+        return this.setState({ err: err.response });
       });
   };
-
 }
 
 export default ArticlesList;
