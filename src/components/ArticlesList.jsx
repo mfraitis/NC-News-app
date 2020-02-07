@@ -3,6 +3,7 @@ import ArticleCard from "./ArticleCard";
 import { fetchArticles } from "../api";
 import SearchBar from "./SearchBar";
 import SortBy from "./SortBy";
+import ErrorPage from "./ErrorPage";
 
 class ArticlesList extends React.Component {
   state = {
@@ -13,8 +14,10 @@ class ArticlesList extends React.Component {
   };
 
   render() {
-    const { articles, isLoading } = this.state;
-    if (isLoading) {
+    const { articles, isLoading, err } = this.state;
+    if (err) {
+      return <ErrorPage err={err} />;
+    } else if (isLoading) {
       return <p>Loading...</p>;
     } else {
       return (
@@ -25,17 +28,15 @@ class ArticlesList extends React.Component {
             setSortBy={this.setSortBy}
             id="sort-by"
           />
-          <ul>
+          <ol>
             {articles.map(article => {
               return <ArticleCard key={article.article_id} article={article} />;
             })}
-          </ul>
+          </ol>
         </main>
       );
     }
   }
-
-  // https: //mf-news.herokuapp.com/api/articles?sort_by=created_at or  comment_count or votes
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.sortBy !== this.state.sortBy) {
@@ -45,9 +46,11 @@ class ArticlesList extends React.Component {
       this.getArticles();
     }
   }
+
   setOrder = event => {
     this.setState({ order: event.target.name });
   };
+
   setSortBy = event => {
     this.setState({ sortBy: event.target.name });
   };
@@ -68,13 +71,18 @@ class ArticlesList extends React.Component {
   getArticles = () => {
     const { topic } = this.props;
     const { sortBy, order } = this.state;
-    fetchArticles(topic, sortBy, order).then(articles => {
-      this.setState({
-        articles: articles,
-        isLoading: false
+    fetchArticles(topic, sortBy, order)
+      .then(articles => {
+        this.setState({
+          articles: articles,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        return this.setState({ err });
       });
-    });
   };
+
 }
 
 export default ArticlesList;

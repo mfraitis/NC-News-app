@@ -16,23 +16,19 @@ const NavBar = props => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          {/* <Link to="/topics/"> */}
-          <Dropdown.Item href="/topics/coding">Coding</Dropdown.Item>
-          {/* </Link> */}
-          {/* <Link to="/topics/"> */}
-          <Dropdown.Item href="/topics/cooking">Cooking</Dropdown.Item>
-          {/* </Link> */}
-          {/* <Link to="/topics/"> */}
-          <Dropdown.Item href="/topics/football">Football</Dropdown.Item>
-          {/* </Link> */}
+          <Dropdown.Item as={Link} to="/topics/coding">
+            Coding
+          </Dropdown.Item>
+          <Dropdown.Item as={Link} to="/topics/cooking">
+            Cooking
+          </Dropdown.Item>
+          <Dropdown.Item as={Link} to="/topics/football">
+            Football
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
-      {username ? (
-        <Button id="logged-in" disabled variant="success">
-          Logged in as : {username}
-        </Button>
-      ) : null}
+      
       {!username ? (
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">

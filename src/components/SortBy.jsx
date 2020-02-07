@@ -5,7 +5,7 @@ const SortBy = props => {
   const { setSortBy, setOrder } = props;
   return (
     <nav id="sort-by">
-      <Dropdown>
+      <Dropdown id="sort-dropdown">
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Sort By
         </Dropdown.Toggle>

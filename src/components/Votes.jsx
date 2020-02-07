@@ -15,6 +15,7 @@ class Votes extends React.Component {
 
     return (
       <section>
+        <p> votes : {votes + voteChange}</p>
         <button
           disabled={voteChange === 1}
           onClick={() => {
@@ -23,7 +24,6 @@ class Votes extends React.Component {
         >
           <ThumbUpIcon />
         </button>
-        <p> votes : {votes + voteChange}</p>
         <button
           disabled={voteChange === -1}
           onClick={() => {

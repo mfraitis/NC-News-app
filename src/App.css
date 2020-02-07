@@ -30,7 +30,10 @@ nav {
   flex-direction: row;
   justify-content: flex-start;
   padding: 0;
-  
+}
+
+#sort-dropdown {
+  padding-right: 10px;
 }
 
 /* home page */
@@ -58,7 +61,13 @@ p {
   margin-left: 10%;
   margin-right: 10%;
 }
+.article-card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 #logged-in {
+  padding-top: 0;
   margin-right: 10px;
 }
 
@@ -66,10 +75,22 @@ p {
   color: white;
 }
 
-ul {
+ol {
   padding: 0;
+}
+
+ul {
+  padding-right: 8%;
+  padding-left: 8%;
+  text-align: left;
 }
 
 li {
   list-style-type: none;
+}
+p.card-text {
+  margin-top: 2%;
+  margin-bottom: 0;
+  text-align: left;
+  color: #04161f;
 }

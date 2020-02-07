@@ -1,35 +1,30 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import Votes from "./Votes";
 import { Link } from "@reach/router";
 
 const ArticleCard = props => {
-  const {
-    article_id,
-    title,
-    votes,
-    // topic,
-    author,
-    // created_at,
-    comment_count
-  } = props.article;
+  const { article_id, title, votes, author, comment_count } = props.article;
 
   return (
     <li>
       <br />
-
       <Card>
-        <Link to={`/article/${article_id}`}>
-          {" "}
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <section className="article-card-body">
             <Card.Text>
-              posted by: {author}, comments:
-              {comment_count}
+              Written by: {author}
+              <br />
+              {comment_count} comments
             </Card.Text>
-          </Card.Body>{" "}
-        </Link>
-        <Votes id={article_id} votes={votes} patch="articles" />
+
+            <Votes id={article_id} votes={votes} patch="articles" />
+          </section>
+          <Link to={`/article/${article_id}`}>
+            <Button variant="success">view article</Button>{" "}
+          </Link>
+        </Card.Body>
       </Card>
     </li>
   );

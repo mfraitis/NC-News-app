@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     const { users, username, err } = this.state;
-    
+
     if (err) {
       return <ErrorPage />;
     } else {
@@ -30,6 +30,13 @@ class App extends React.Component {
             users={users}
             username={username}
           />
+          <React.Fragment>
+            {username ? (
+              <nav id="logged-in" disabled variant="success">
+                Logged in as : {username}
+              </nav>
+            ) : null}
+          </React.Fragment>
           <Header />
           <Router>
             <Home path="/" />

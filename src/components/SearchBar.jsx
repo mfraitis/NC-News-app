@@ -4,6 +4,7 @@ class SearchBar extends React.Component {
   state = {
     searchValue: ""
   };
+  
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
