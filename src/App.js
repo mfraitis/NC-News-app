@@ -30,13 +30,15 @@ class App extends React.Component {
             users={users}
             username={username}
           />
-          <React.Fragment>
+
+          <nav id="logged-in" disabled variant="success">
             {username ? (
-              <nav id="logged-in" disabled variant="success">
-                Logged in as : {username}
-              </nav>
-            ) : null}
-          </React.Fragment>
+              <React.Fragment> Logged in as : {username}</React.Fragment>
+            ) : (
+              <br />
+            )}
+          </nav>
+
           <Header />
           <Router>
             <Home path="/" />
@@ -49,10 +51,13 @@ class App extends React.Component {
     }
   }
   handleClick = event => {
+    localStorage.setItem("username", event.target.name);
     this.setState({ username: event.target.name });
   };
 
   componentDidMount() {
+    localStorage.getItem("username") &&
+      this.setState({ username: localStorage.getItem("username") });
     fetchUsers()
       .then(users => {
         this.setState({ users: users.map(user => user.username) });

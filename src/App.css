@@ -66,8 +66,8 @@ nav {
   justify-content: space-between;
 }
 #logged-in {
-  padding-top: 0;
-  margin-right: 10px;
+  padding: 0;
+  margin-right: 2%;
 }
 .card-body {
   color: #04161f;

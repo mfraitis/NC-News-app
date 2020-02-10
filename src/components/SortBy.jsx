@@ -1,11 +1,37 @@
 import React from "react";
-import { Dropdown } from "react-bootstrap";
+// import { Dropdown } from "react-bootstrap";
 
 const SortBy = props => {
   const { setSortBy, setOrder } = props;
   return (
     <nav id="sort-by">
-      <Dropdown id="sort-dropdown">
+      <label>
+        {" "}
+        Sort By:
+        <select
+          id="sort"
+          onChange={event => {
+            setSortBy(event.target.value);
+          }}
+        >
+          <option value="created_at">Date</option>
+          <option value="votes">Votes</option>
+          <option value="comment_count">Comments</option>
+        </select>
+      </label>
+      <label>
+        Order:
+        <select
+          id="order"
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        >
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </label>
+      {/* <Dropdown id="sort-dropdown">
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Sort By
         </Dropdown.Toggle>
@@ -21,8 +47,9 @@ const SortBy = props => {
             Votes
           </Dropdown.Item>
         </Dropdown.Menu>
-      </Dropdown>
-      <Dropdown>
+      </Dropdown> */}
+
+      {/* <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Order
         </Dropdown.Toggle>
@@ -35,7 +62,7 @@ const SortBy = props => {
             descending
           </Dropdown.Item>
         </Dropdown.Menu>
-      </Dropdown>
+      </Dropdown> */}
     </nav>
   );
 };

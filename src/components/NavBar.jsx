@@ -28,9 +28,8 @@ const NavBar = props => {
         </Dropdown.Menu>
       </Dropdown>
 
-      
       {!username ? (
-        <Dropdown>
+        <Dropdown alignRight>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Login as
           </Dropdown.Toggle>

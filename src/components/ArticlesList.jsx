@@ -48,12 +48,13 @@ class ArticlesList extends React.Component {
     }
   }
 
-  setOrder = event => {
-    this.setState({ order: event.target.name });
+  setOrder = order => {
+    console.log(order);
+    this.setState({ order });
   };
 
-  setSortBy = event => {
-    this.setState({ sortBy: event.target.name });
+  setSortBy = sortBy => {
+    this.setState({ sortBy });
   };
 
   searchArticles = searchValue => {
