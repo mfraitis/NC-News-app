@@ -25,6 +25,8 @@ Back end api [https://mf-news.herokuapp.com/api](https://mf-news.herokuapp.com/a
 
 ## How to run locally
 
+requires node v12.12.0
+
 ### step 1 - clone the repository
 
 ```
