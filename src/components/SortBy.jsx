@@ -17,10 +17,12 @@ const SortBy = props => {
           <option value="created_at">Date</option>
           <option value="votes">Votes</option>
           <option value="comment_count">Comments</option>
-        </select>
+        </select>{" "}
       </label>
+
       <label>
-        Order:
+        
+        Order :
         <select
           id="order"
           onChange={event => {
@@ -48,7 +50,6 @@ const SortBy = props => {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown> */}
-
       {/* <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Order

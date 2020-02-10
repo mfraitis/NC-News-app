@@ -4,9 +4,23 @@ import { Dropdown, Button } from "react-bootstrap";
 
 const NavBar = props => {
   const { users, handleClick, username } = props;
+  const navbar = document.getElementById("main-nav") || 0;
+
+  const sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky");
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  window.onscroll = function() {
+    myFunction();
+  };
 
   return (
-    <nav>
+    <nav id="main-nav">
       <Link to={"/"}>
         <Button variant="success">Home </Button>
       </Link>
