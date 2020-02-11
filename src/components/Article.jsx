@@ -17,7 +17,12 @@ class Article extends React.Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <p>Loading...</p>;
+      return (
+        <React.Fragment>
+          <p>Loading...</p>
+          <i class="fa fa-spinner fa-spin"></i>
+        </React.Fragment>
+      );
     } else
       return (
         <main>
@@ -28,6 +33,10 @@ class Article extends React.Component {
           <button onClick={this.viewComments}>
             {showComments ? "Hide" : "View"} comments
           </button>
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
           {showComments ? (
             <CommentsList

@@ -8,15 +8,15 @@ const NavBar = props => {
 
   const sticky = navbar.offsetTop;
 
-  function myFunction() {
+  function stickyNav() {
     if (window.pageYOffset >= sticky) {
       navbar.classList.add("sticky");
     } else {
       navbar.classList.remove("sticky");
     }
   }
-  window.onscroll = function() {
-    myFunction();
+  window.onscroll = () => {
+    stickyNav();
   };
 
   return (

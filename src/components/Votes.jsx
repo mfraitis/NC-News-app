@@ -1,7 +1,7 @@
 import React from "react";
 import { updateVotes } from "../api";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+// import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+// import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ErrorPage from "./ErrorPage";
 
 class Votes extends React.Component {
@@ -18,24 +18,25 @@ class Votes extends React.Component {
     }
     return (
       <section>
-        <p> votes : {votes + voteChange}</p>
+        <p> Votes {votes + voteChange}</p>
         <button
+          className="voteButton"
           disabled={voteChange === 1}
           onClick={() => {
             this.handleVote(1);
           }}
         >
-          <ThumbUpIcon />
+          <i class="far fa-thumbs-up"></i>
         </button>
         <button
+          className="voteButton"
           disabled={voteChange === -1}
           onClick={() => {
             this.handleVote(-1);
           }}
         >
-          <ThumbDownIcon />
+          <i class="far fa-thumbs-down"></i>
         </button>
-       
       </section>
     );
   }

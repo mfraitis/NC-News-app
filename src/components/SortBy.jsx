@@ -7,7 +7,7 @@ const SortBy = props => {
     <nav id="sort-by">
       <label>
         {" "}
-        Sort By:
+        Sort By :
         <select
           id="sort"
           onChange={event => {
@@ -20,7 +20,7 @@ const SortBy = props => {
         </select>{" "}
       </label>
 
-      <label>
+      <label id="sort-dropdown">
         
         Order :
         <select

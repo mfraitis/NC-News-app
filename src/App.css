@@ -29,12 +29,12 @@ nav {
 #sort-by {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0;
 }
 
 #sort-dropdown {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 
 /* home page */
@@ -95,6 +95,22 @@ ul {
 
 li {
   list-style-type: none;
+  margin: 10px;
+  /* height: 20rem; */
+}
+.articleCards {
+  background-color: white;
+  color: #06141b;
+  padding: 3%;
+  padding-top: 0;
+  border-radius: 20px 50px;
+}
+.cardInfo {
+  padding-bottom: 0;
+  padding-top: 1.5em;
+}
+h3 {
+  font-family: "Times New Roman", Times, serif;
 }
 .card-text {
   margin-top: 2%;
@@ -120,6 +136,9 @@ li {
   justify-content: space-between;
 }
 
+.voteButton {
+  border-radius: 50%;
+}
 @media only screen and (max-width: 800px) {
   ol {
     padding: 0;
@@ -127,16 +146,23 @@ li {
     flex-direction: column;
   }
   #main-nav {
+    overflow: hidden;
     background-color: #06141b;
-    opacity: 0.99999;
   }
-
+  .articleCards {
+    border-radius: 20px;
+  }
+  .home-list {
+    padding-right: 2%;
+    padding-left: 2%;
+  }
   .content {
-    padding: 16px;
+    padding: 1px;
   }
 
   .sticky {
     position: sticky;
+
     top: 0;
     width: 100%;
   }

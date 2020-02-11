@@ -19,11 +19,16 @@ class ArticlesList extends React.Component {
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
-      return <p>Loading...</p>;
+      return (
+        <p>
+          Loading... <i class="fa fa-spinner fa-spin"></i>
+        </p>
+      );
     } else {
       return (
         <main className="home-list">
           <SearchBar search={this.searchArticles} />
+          <br />
           <SortBy
             setOrder={this.setOrder}
             setSortBy={this.setSortBy}
