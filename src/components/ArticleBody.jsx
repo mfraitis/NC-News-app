@@ -8,7 +8,7 @@ const ArticleBody = props => {
       <br />
       <h3>{title}</h3>
       <br />
-      <p className="article-p">{body}</p>
+      <p id="articleBody">{body}</p>
       <section id="article-info">
         <p id="article-p-info">
           written by : {author} <br /> posted on:
