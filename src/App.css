@@ -136,6 +136,10 @@ h3 {
   justify-content: space-between;
 }
 
+#delete-me {
+  border-radius: 50%;
+}
+
 .voteButton {
   border-radius: 50%;
 }

@@ -24,7 +24,7 @@ const CommentCard = props => {
             onClick={deleteComment}
             value={comment.comment_id}
           >
-            Delete
+            <i class="fas fa-trash"></i>
           </button>
         ) : null}
       </section>
