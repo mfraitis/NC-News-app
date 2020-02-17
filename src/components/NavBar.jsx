@@ -21,6 +21,7 @@ const NavBar = props => {
 
   return (
     <nav id="main-nav">
+      <p id="logo_header">NC News</p>
       <Link to={"/"}>
         <Button variant="success">Home </Button>
       </Link>

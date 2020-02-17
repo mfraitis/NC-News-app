@@ -21,7 +21,9 @@ const CommentCard = props => {
         {username === comment.author ? (
           <button
             id="delete-me"
-            onClick={deleteComment}
+            onClick={() => {
+              deleteComment(comment.comment_id);
+            }}
             value={comment.comment_id}
           >
             <i class="fas fa-trash"></i>

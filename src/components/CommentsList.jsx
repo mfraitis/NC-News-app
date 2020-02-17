@@ -41,8 +41,7 @@ class CommentsList extends React.Component {
       </section>
     );
   }
-  deleteComment = event => {
-    const comment_id = event.target.value;
+  deleteComment = comment_id => {
 
     removeComment(comment_id)
       .then(() => {

@@ -11,11 +11,14 @@ class ArticlesList extends React.Component {
     isLoading: true,
     sortBy: "",
     order: "",
+    limit: 10,
+    p: 1,
     err: null
   };
 
   render() {
     const { articles, isLoading, err } = this.state;
+    console.log(articles);
     if (err) {
       return <ErrorPage err={err} />;
     } else if (isLoading) {
@@ -39,16 +42,35 @@ class ArticlesList extends React.Component {
               return <ArticleCard key={article.article_id} article={article} />;
             })}
           </ol>
+          <button
+            onClick={() => {
+              this.nextPage(-1);
+            }}
+            disabled={this.state.p === 1}
+          >
+            previous
+          </button>
+          {this.state.p}
+          <button
+            onClick={() => {
+              this.nextPage(1);
+            }}
+            disabled={this.state.articles.length < 10}
+          >
+            next
+          </button>
         </main>
       );
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.sortBy !== this.state.sortBy) {
-      this.getArticles();
-    }
-    if (prevState.order !== this.state.order) {
+    if (
+      prevProps.topic !== this.props.topic ||
+      prevState.sortBy !== this.state.sortBy ||
+      prevState.order !== this.state.order ||
+      prevState.p !== this.state.p
+    ) {
       this.getArticles();
     }
   }
@@ -75,10 +97,16 @@ class ArticlesList extends React.Component {
     this.getArticles();
   }
 
+  nextPage = page => {
+    this.setState(currentState => {
+      return { p: currentState.p + page };
+    });
+  };
+
   getArticles = () => {
     const { topic } = this.props;
-    const { sortBy, order } = this.state;
-    fetchArticles(topic, sortBy, order)
+    const { sortBy, order, limit, p } = this.state;
+    fetchArticles(topic, sortBy, order, limit, p)
       .then(articles => {
         this.setState({
           articles: articles,

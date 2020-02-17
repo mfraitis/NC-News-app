@@ -137,13 +137,34 @@ h3 {
 }
 
 #delete-me {
+  /* background-color: none; */
+  background-color: transparent;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
+  /* opacity: 0.01; */
+  color: red;
+  border: solid red 1px;
 }
 
 .voteButton {
   border-radius: 50%;
 }
+#logo_header {
+  display: none !important;
+}
 @media only screen and (max-width: 800px) {
+  #logo_header {
+    color: red;
+    display: block !important;
+    text-align: justify;
+    font-size: 15px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    /* margin-top: 2px;*/
+    margin-right: 14px;
+  }
   ol {
     padding: 0;
     display: flex;
